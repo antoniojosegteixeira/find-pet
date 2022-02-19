@@ -15,10 +15,13 @@ export const register = (email, password) => {
     });
 };
 
-export const login = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password).then(() =>
-    console.log("logged in")
-  );
+export const login = async (email, password) => {
+  try {
+    const response = await signInWithEmailAndPassword(auth, email, password);
+    return response;
+  } catch (err) {
+    return err;
+  }
 };
 
 export const logout = () => {
