@@ -1,13 +1,24 @@
 import React from "react";
-import { login } from "../services/auth";
+import { connect } from "react-redux";
+import { signIn } from "../redux/actions";
 
-export default function Login() {
+const Login = ({ user, signIn }) => {
   return (
     <div>
       Login
-      <button onClick={() => login("email2@email.com", "1234567890")}>
+      <button onClick={() => signIn("email2@email.com", "1234567890")}>
         LOGIN
       </button>
     </div>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return { user: state.user };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  signIn: (email, password) => dispatch(signIn(email, password)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
