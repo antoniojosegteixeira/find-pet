@@ -2,29 +2,39 @@ import React, { useState, createContext, useContext, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 
-/// CONTEXT API
-const authContext = createContext({});
+// Criando context
+const AuthContext = createContext({});
 
-const AuthProvider = ({ children }) => {
+// Criando provider
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   return (
-    <AuthProvider.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
-    </AuthProvider.Provider>
+    </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => {
-  const { user, setUser } = useContext(authContext);
+// Criando hook, consumindo o context e passando as funções necessárias
+export function useAuth() {
+  const context = useContext(AuthContext);
+  const { user, setUser } = context;
 
   useEffect(() => {
-    const isLogged = onAuthStateChanged(auth, async (authenticatedUser) => {
-      authenticatedUser ? setUser(authenticatedUser) : setUser(null);
-    });
+    const updateUser = async () => {
+      onAuthStateChanged(auth, (authenticatedUser) => {
+        if (authenticatedUser) {
+          setUser(authenticatedUser);
+        } else {
+          setUser(null);
+        }
+      });
+    };
+    updateUser();
 
-    return () => isLogged();
-  }, [user, setUser]);
+    return () => updateUser();
+  }, [setUser]);
 
-  return { user };
-};
+  return { user, setUser };
+}
