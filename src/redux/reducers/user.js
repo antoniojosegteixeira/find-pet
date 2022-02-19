@@ -1,9 +1,10 @@
-const initialState = {
-  name: "",
-  id: "",
-  token: "",
-};
+const initialState = {};
 
 export default function userReducer(state = initialState, action) {
-  return state;
+  switch (action.type) {
+    case "USER_LOGIN":
+      return action.payload;
+    default:
+      return state;
+  }
 }
