@@ -1,11 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
 import { logout } from "../services/auth";
-import useAuthListener from "../hooks/useAuthListener";
 
-export default function Home() {
-  const authUser = useAuthListener();
-
-  console.log(authUser);
+function Home({ user }) {
+  console.log(user);
   return (
     <div>
       Home
@@ -16,3 +14,9 @@ export default function Home() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps)(Home);
