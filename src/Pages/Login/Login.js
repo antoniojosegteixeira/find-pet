@@ -41,7 +41,9 @@ export default function Login() {
         <span data-testid="login-password-error">
           {errors.password?.message}
         </span>
-        <button onSubmit={onSubmit}>Enviar</button>
+        <button onSubmit={onSubmit} data-testid="login-submit-button">
+          Enviar
+        </button>
       </form>
     </div>
   );
