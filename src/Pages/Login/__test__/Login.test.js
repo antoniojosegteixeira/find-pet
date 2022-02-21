@@ -61,9 +61,9 @@ describe("Login page", () => {
   test("should show error on short password", () => {
     render(<LoginComponent />);
     const shortPasswordText = "123";
-    const loginEmailInput = screen.getByTestId("login-email-input");
-    const passwordError = screen.getByTestId("login-email-error");
-    fireEvent.change(loginEmailInput, {
+    const loginPasswordInput = screen.getByTestId("login-password-input");
+    const passwordError = screen.getByTestId("login-password-error");
+    fireEvent.change(loginPasswordInput, {
       target: { value: shortPasswordText },
     });
     expect(passwordError.value).not.toBe("");
@@ -72,9 +72,9 @@ describe("Login page", () => {
   test("should show error on long password", () => {
     render(<LoginComponent />);
     const longPasswordText = new Array(40 + 1).join("#");
-    const loginEmailInput = screen.getByTestId("login-email-input");
-    const passwordError = screen.getByTestId("login-email-error");
-    fireEvent.change(loginEmailInput, {
+    const loginPasswordInput = screen.getByTestId("login-password-input");
+    const passwordError = screen.getByTestId("login-password-error");
+    fireEvent.change(loginPasswordInput, {
       target: { value: longPasswordText },
     });
     expect(passwordError.value).not.toBe("");
