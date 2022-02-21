@@ -51,6 +51,7 @@ export default function Register() {
         <input
           data-testid="register-confpassword-input"
           name="confPassword"
+          type="password"
           {...register("confPassword")}
         ></input>
         <br />

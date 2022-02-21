@@ -14,6 +14,10 @@ const registrationSchema = yup.object().shape({
     .min(6, "Senha deve conter no mínimo 6 dígitos")
     .max(40, "Senha deve conter no máximo 40 dígitos")
     .required("Campo obrigatório"),
+  confPassword: yup
+    .string("Campo inválido")
+    .required("Campo obrigatório")
+    .oneOf([yup.ref("password"), null]),
 });
 
 export default registrationSchema;
