@@ -58,7 +58,9 @@ export default function Register() {
         <span data-testid="register-confpassword-error">
           {errors.confPassword?.message}
         </span>
-        <button onSubmit={onSubmit}>Enviar</button>
+        <button onSubmit={onSubmit} data-testid="register-submit-button">
+          Enviar
+        </button>
       </form>
     </div>
   );
