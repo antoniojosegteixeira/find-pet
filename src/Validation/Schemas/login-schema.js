@@ -1,15 +1,23 @@
 import * as yup from "yup";
 
+export const loginErrMgs = {
+  required: "Campo obrigatório",
+  invalidType: "Campo inválido",
+  invalidEmail: "Insira um email válido",
+  minPassword: "Senha deve conter no mínimo 6 dígitos",
+  maxPassword: "Senha deve conter no máximo 40 dígitos",
+};
+
 const loginSchema = yup.object().shape({
   email: yup
-    .string("Campo inválido")
-    .email("Insira um email válido")
-    .required("Campo obrigatório"),
+    .string(loginErrMgs.invalidType)
+    .email(loginErrMgs.invalidEmail)
+    .required(loginErrMgs.required),
   password: yup
-    .string("Campo inválido")
-    .min(6, "Senha deve conter no mínimo 6 dígitos")
-    .max(40, "Senha deve conter no máximo 40 dígitos")
-    .required("Campo obrigatório"),
+    .string(loginErrMgs.invalidType)
+    .min(6, loginErrMgs.minPassword)
+    .max(40, loginErrMgs.maxPassword)
+    .required(loginErrMgs.required),
 });
 
 export default loginSchema;
