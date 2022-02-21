@@ -1,23 +1,33 @@
 import * as yup from "yup";
 
+export const registerErrMgs = {
+  required: "Campo obrigatório",
+  invalidType: "Campo inválido",
+  nameMin: "Nome deve conter no mínimo 2 caracteres",
+  invalidEmail: "Insira um email válido",
+  minPassword: "Senha deve conter no mínimo 6 dígitos",
+  maxPassword: "Senha deve conter no máximo 40 dígitos",
+  matchingPassword: "Senhas não conferem",
+};
+
 const registrationSchema = yup.object().shape({
   name: yup
-    .string("Campo inválido")
-    .min(2, "Nome deve conter no mínimo 2 caracteres")
-    .required("Campo obrigatório"),
+    .string(registerErrMgs.invalidType)
+    .min(2, registerErrMgs.nameMin)
+    .required(registerErrMgs.required),
   email: yup
-    .string("Campo inválido")
-    .email("Insira um email válido")
-    .required("Campo obrigatório"),
+    .string(registerErrMgs.invalidType)
+    .email(registerErrMgs.invalidEmail)
+    .required(registerErrMgs.required),
   password: yup
-    .string("Campo inválido")
-    .min(6, "Senha deve conter no mínimo 6 dígitos")
-    .max(40, "Senha deve conter no máximo 40 dígitos")
-    .required("Campo obrigatório"),
+    .string(registerErrMgs.invalidType)
+    .min(6, registerErrMgs.minPassword)
+    .max(40, registerErrMgs.maxPassword)
+    .required(registerErrMgs.required),
   confPassword: yup
-    .string("Campo inválido")
-    .required("Campo obrigatório")
-    .oneOf([yup.ref("password"), null]),
+    .string(registerErrMgs.invalidType)
+    .required(registerErrMgs.required)
+    .oneOf([yup.ref("password"), null], registerErrMgs.matchingPassword),
 });
 
 export default registrationSchema;
