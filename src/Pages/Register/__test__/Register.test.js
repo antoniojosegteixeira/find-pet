@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import store from "../../../Redux/Store/store";
 import faker from "@faker-js/faker";
 import { Provider } from "react-redux";
+import { registerErrMgs } from "../../../Validation/Schemas/registration-schema";
 
 import Register from "../Register";
 
@@ -33,15 +34,22 @@ describe("register page", () => {
     expect(registerEmailInput.value).toBe(emailText);
   });
 
-  test("should show error on incorrect email", () => {
+  test("should show error on incorrect email", async () => {
     render(<RegisterComponent />);
     const incorrectEmailText = "random";
     const registerEmailInput = screen.getByTestId("register-email-input");
-    const emailError = screen.getByTestId("register-email-error");
     fireEvent.change(registerEmailInput, {
       target: { value: incorrectEmailText },
     });
-    expect(emailError.value).not.toBe("");
+
+    // Submitting
+    const submitButton = screen.getByTestId("register-submit-button");
+    fireEvent.click(submitButton);
+
+    // Getting error field
+    expect(
+      await screen.findByText(registerErrMgs.invalidEmail)
+    ).toBeInTheDocument();
   });
 
   test("should have name input", () => {
@@ -58,15 +66,20 @@ describe("register page", () => {
     expect(registerNameInput.value).toBe(nameText);
   });
 
-  test("should show error on short name", () => {
+  test("should show error on short name", async () => {
     render(<RegisterComponent />);
     const incorrectEmailText = "r";
     const registerEmailInput = screen.getByTestId("register-email-input");
-    const emailError = screen.getByTestId("register-email-error");
     fireEvent.change(registerEmailInput, {
       target: { value: incorrectEmailText },
     });
-    expect(emailError.value).not.toBe("");
+
+    // Submitting
+    const submitButton = screen.getByTestId("register-submit-button");
+    fireEvent.click(submitButton);
+
+    // Getting error field
+    expect(await screen.findByText(registerErrMgs.nameMin)).toBeInTheDocument();
   });
 
   test("should have password input", () => {
@@ -85,26 +98,40 @@ describe("register page", () => {
     expect(registerPasswordInput.value).toBe(passwordText);
   });
 
-  test("should show error on short password", () => {
+  test("should show error on short password", async () => {
     render(<RegisterComponent />);
     const shortPasswordText = "123";
     const registerPasswordInput = screen.getByTestId("register-password-input");
-    const passwordError = screen.getByTestId("register-password-error");
     fireEvent.change(registerPasswordInput, {
       target: { value: shortPasswordText },
     });
-    expect(passwordError.value).not.toBe("");
+
+    // Submitting
+    const submitButton = screen.getByTestId("register-submit-button");
+    fireEvent.click(submitButton);
+
+    // Getting error field
+    expect(
+      await screen.findByText(registerErrMgs.minPassword)
+    ).toBeInTheDocument();
   });
 
-  test("should show error on long password", () => {
+  test("should show error on long password", async () => {
     render(<RegisterComponent />);
-    const longPasswordText = new Array(40 + 1).join("#");
+    const longPasswordText = new Array(50).join("#");
     const registerPasswordInput = screen.getByTestId("register-password-input");
-    const passwordError = screen.getByTestId("register-password-error");
     fireEvent.change(registerPasswordInput, {
       target: { value: longPasswordText },
     });
-    expect(passwordError.value).not.toBe("");
+
+    // Submitting
+    const submitButton = screen.getByTestId("register-submit-button");
+    fireEvent.click(submitButton);
+
+    // Getting error field
+    expect(
+      await screen.findByText(registerErrMgs.maxPassword)
+    ).toBeInTheDocument();
   });
 
   test("should have confirm password input", () => {
@@ -127,7 +154,7 @@ describe("register page", () => {
     expect(registerConfirmPasswordInput.value).toBe(passwordText);
   });
 
-  test("should show error on unmatching passwords", () => {
+  test("should show error on unmatching passwords", async () => {
     render(<RegisterComponent />);
 
     const registerPasswordInput = screen.getByTestId("register-password-input");
@@ -142,9 +169,13 @@ describe("register page", () => {
       target: { value: "anotherpassword12321" },
     });
 
-    const confirmPasswordError = screen.getByTestId(
-      "register-confpassword-error"
-    );
-    expect(confirmPasswordError.value).not.toBe("");
+    // Submitting
+    const submitButton = screen.getByTestId("register-submit-button");
+    fireEvent.click(submitButton);
+
+    // Getting error field
+    expect(
+      await screen.findByText(registerErrMgs.matchingPassword)
+    ).toBeInTheDocument();
   });
 });
