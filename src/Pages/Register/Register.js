@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../Redux/Slices/userSlice";
+import { registerUser } from "../../Redux/Slices/User/userSlice";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registrationSchema from "../../Validation/Schemas/registration-schema";

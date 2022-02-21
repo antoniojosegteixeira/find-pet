@@ -1,12 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../../Redux/Slices/userSlice";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../Validation/Schemas/login-schema";
+import { loginUser } from "../../Redux/Slices/User/requests";
+import { selectLoginStatus } from "../../Redux/Slices/User/userSlice";
+import { useSelector } from "react-redux";
 
 export default function Login() {
   const dispatch = useDispatch();
+  const loginStatus = useSelector(selectLoginStatus);
 
   const {
     register,
@@ -18,7 +21,7 @@ export default function Login() {
 
   const onSubmit = (data) => {
     // Dispatch as action to redux
-    dispatch(login(data));
+    dispatch(loginUser());
   };
 
   return (
@@ -45,6 +48,7 @@ export default function Login() {
           Enviar
         </button>
       </form>
+      <span>{loginStatus}</span>
     </div>
   );
 }
