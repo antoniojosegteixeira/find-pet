@@ -7,10 +7,7 @@ export const createPostErrMsgs = {
 };
 
 const createPostSchema = yup.object().shape({
-  name: yup
-    .string(createPostErrMsgs.invalidType)
-    .required(createPostErrMsgs.required),
-  species: yup
+  animalName: yup
     .string(createPostErrMsgs.invalidType)
     .required(createPostErrMsgs.required),
   color: yup
@@ -27,20 +24,5 @@ const createPostSchema = yup.object().shape({
     .required(createPostErrMsgs.required),
   date: yup.date(createPostErrMsgs.date).required(createPostErrMsgs.required),
 });
-
-/*
-
-
-
-
-name: { type: String, required: true },
-species: { type: String, required: true },
-color: { type: String },
-images: [{ type: String }],
-description: { type: String, required: true },
-city: { type: String, required: true },
-state: { type: String, required: true },
-date: { type: Date, required: true },
-*/
 
 export default createPostSchema;
