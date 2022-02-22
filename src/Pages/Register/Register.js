@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../Redux/Slices/User/userSlice";
+import { registerUser } from "../../Redux/Slices/User/requests.js";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registrationSchema from "../../Validation/Schemas/registration-schema";
@@ -39,6 +39,21 @@ export default function Register() {
         ></input>
         <br />
         <span data-testid="register-email-error">{errors.email?.message}</span>
+
+        <input
+          data-testid="register-city-input"
+          name="city"
+          {...register("city")}
+        ></input>
+        <span data-testid="register-city-error">{errors.city?.message}</span>
+        <br />
+        <input
+          data-testid="register-state-input"
+          name="state"
+          {...register("state")}
+        ></input>
+        <span data-testid="register-state-error">{errors.state?.message}</span>
+        <br />
         <input
           data-testid="register-password-input"
           name="password"
@@ -48,6 +63,7 @@ export default function Register() {
         <span data-testid="register-password-error">
           {errors.password?.message}
         </span>
+        <br />
         <input
           data-testid="register-confpassword-input"
           name="confPassword"
