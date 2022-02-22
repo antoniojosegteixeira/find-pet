@@ -12,7 +12,7 @@ export const userSlice = createSlice({
   extraReducers: extraReducers,
 });
 
-export const { registerUser } = userSlice.actions;
+//export const { } = userSlice.actions;
 export const selectUser = (state) => state.user.user;
 export const selectLoginStatus = (state) => state.user.loginStatus;
 export default userSlice.reducer;
