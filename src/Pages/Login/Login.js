@@ -19,9 +19,9 @@ export default function Login() {
     resolver: yupResolver(loginSchema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (formData) => {
     // Dispatch as action to redux
-    dispatch(loginUser());
+    dispatch(loginUser(formData));
   };
 
   return (
