@@ -1,7 +1,3 @@
-const reducers = {
-  registerUser(state, action) {
-    state.user = action.payload;
-  },
-};
+const reducers = {};
 
 export default reducers;
