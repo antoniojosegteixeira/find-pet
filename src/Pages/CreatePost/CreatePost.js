@@ -8,26 +8,34 @@ import { useSelector } from "react-redux";
 export default function CreatePost() {
   const dispatch = useDispatch();
   const [species, setSpecies] = useState("cão");
+  const [images, setImages] = useState(null);
 
-  const date = new Date();
+  const handleFileSelected = (e) => {
+    const files = e.target.files;
+    for (let i = 0; i < Object.keys(files).length; i++) {
+      if (files[i].size / 1024 / 1024 > 5) {
+        window.alert("Tamanho máximo de arquivo: 5mb");
+        break;
+      }
+    }
+    setImages(files);
+  };
 
   const onSubmit = (formData) => {
     // Dispatch as action to redux
-    console.log(formData);
+    console.log({ ...formData, species, images });
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(createPostSchema),
-  });
+  } = useForm();
 
   return (
     <div data-testid="create-post-wrapper">
       Criar Post
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
         <input
           name="images"
           type="file"
@@ -35,6 +43,7 @@ export default function CreatePost() {
           required
           accept="image/png, image/jpeg, image/jpg"
           alt="image upload"
+          onChange={handleFileSelected}
         />
         <br />
         <input
@@ -97,10 +106,6 @@ export default function CreatePost() {
         <br />
         <span data-testid="create-post-city-error">{errors.city?.message}</span>
 
-        <button type="submit" data-testid="create-post-submit-button">
-          Enviar
-        </button>
-
         <input
           data-testid="create-post-city-input"
           name="state"
@@ -120,6 +125,15 @@ export default function CreatePost() {
         <span data-testid="create-post-state-error">
           {errors.date?.message}
         </span>
+
+        <input
+          data-testid="create-post-city-input"
+          name="date"
+          type="date"
+          {...register("date")}
+        ></input>
+        <br />
+        <span data-testid="create-post-date-error">{errors.date?.message}</span>
 
         <button type="submit" data-testid="create-post-submit-button">
           Enviar
