@@ -23,6 +23,16 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const createPost = createAsyncThunk(
+  "post/createPost",
+  async (formData) => {
+    const { data } = await axios.post("http://localhost:5000/create-post", {
+      data: formData,
+    });
+    return data;
+  }
+);
+
 /* EXTRA REDUCERS */
 
 const loginExtraReducer = {
