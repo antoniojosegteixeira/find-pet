@@ -9,7 +9,6 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    border: "1px solid red",
     order: { xs: 2, sm: 1, md: 1, lg: 1 },
   },
   heroInfoBox: {
@@ -20,11 +19,11 @@ const styles = {
   heroBackground: {
     width: { lg: "60%", md: "100%" },
     margin: "0 auto",
-    border: "1px solid ",
     order: { xs: 1, sm: 2, md: 2, lg: 2 },
   },
   button: {
     marginTop: 4,
+    padding: "12px 22px 12px 22px",
   },
   backgroundWrapper: {
     position: "relative",
