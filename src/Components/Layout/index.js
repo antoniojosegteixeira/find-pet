@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "./styles";
 
-import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import Logo from "../Svg/Logo";
 
@@ -32,6 +39,25 @@ export default function Layout({ children }) {
         </AppBar>
       </Box>
       {children}
+      <Box sx={{ flexGrow: 1, mt: 5 }}>
+        <AppBar position="static" sx={styles.appbar}>
+          <Toolbar>
+            <Typography color="primary" variant="subtitle2">
+              © Construído por Antônio Teixeira
+            </Typography>
+
+            <Box sx={{ flexGrow: 1 }}></Box>
+
+            <IconButton>
+              <i className="fab fa-facebook"></i>
+            </IconButton>
+
+            <IconButton>
+              <i className="fab fa-instagram"></i>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      </Box>
     </>
   );
 }
