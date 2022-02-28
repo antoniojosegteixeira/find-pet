@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import client1 from "../../Assets/Images/client1.png";
 import client2 from "../../Assets/Images/client2.png";
+import client3 from "../../Assets/Images/client3.png";
 
 export default function RecommendationSection() {
   return (
@@ -21,7 +22,7 @@ export default function RecommendationSection() {
           <Box sx={styles.card}>
             <Box sx={styles.imgWrapper}>
               <Box sx={styles.imgBackground}></Box>
-              <img src={client1} alt="Mulher abraçada com cachorro" />
+              <img src={client1} alt="Mulher abraçada com gato" />
             </Box>
             <CardContent sx={styles.cardInfo}>
               <Typography
@@ -53,7 +54,7 @@ export default function RecommendationSection() {
                 align="center"
                 color="#DDCA69"
               >
-                Jéssica e Laika
+                Jéssica & Laika
               </Typography>
               <Typography variant="body2" color="white" align="center">
                 "Encontramos a Laika com a ajuda do FindPet!"
@@ -65,7 +66,7 @@ export default function RecommendationSection() {
           <Box sx={styles.card}>
             <Box sx={styles.imgWrapper}>
               <Box sx={styles.imgBackground}></Box>
-              <img src={client1} alt="Mulher abraçada com cachorro" />
+              <img src={client3} alt="Homem abraçado com cachorro" />
             </Box>
             <CardContent sx={styles.cardInfo}>
               <Typography
@@ -75,10 +76,11 @@ export default function RecommendationSection() {
                 align="center"
                 color="#DDCA69"
               >
-                Jéssica e Laika
+                Matheus & Fred
               </Typography>
               <Typography variant="body2" color="white" align="center">
-                "Encontramos a Laika com a ajuda do FindPet!"
+                "Em apenas três horas recebemos uma ligação. Alguém tinha achado
+                o Fred!"
               </Typography>
             </CardContent>
           </Box>
