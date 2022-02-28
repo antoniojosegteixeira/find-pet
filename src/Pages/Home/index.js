@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles";
 
 import { Container, Grid, Typography, Box, Button } from "@mui/material";
+import Layout from "../../Components/Layout";
 import RecommendationSection from "../../Components/RecommendationSection/";
 import FirstSectionSvg from "./svg/FirstSectionSvg";
 import SecondSectionSvg from "./svg/SecondSectionSvg";
@@ -10,7 +11,7 @@ import layingDog from "../../Assets/Images/laying-dog.png";
 
 const Home = () => {
   return (
-    <>
+    <Layout>
       <Container sx={styles.container}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={5} sx={styles.heroInfo}>
@@ -71,7 +72,7 @@ const Home = () => {
         </Grid>
       </Container>
       <RecommendationSection />
-    </>
+    </Layout>
   );
 };
 
