@@ -1,6 +1,6 @@
 import React from "react";
 
-export const BgSvg = () => {
+export default function FirstSectionSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -254,4 +254,4 @@ export const BgSvg = () => {
       />
     </svg>
   );
-};
+}
