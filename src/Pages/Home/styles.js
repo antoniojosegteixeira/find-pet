@@ -4,7 +4,7 @@ import bird from "../../Assets/Images/bird1.jpg";
 import iguana from "../../Assets/Images/iguana1.jpg";
 
 const styles = {
-  container: { maxWidth: "900px" },
+  container: { border: "1px solid" },
   heroInfo: {
     display: "flex",
     justifyContent: "center",
@@ -14,8 +14,16 @@ const styles = {
   heroInfoBox: {
     padding: "0 5px 0 5px",
     textAlign: { xs: "center", sm: "start" },
+    paddingLeft: { md: 5 },
   },
-  title: { fontFamily: "Pangolin" },
+  title: {
+    fontFamily: "Pangolin",
+    fontSize: {
+      sm: "1.8rem",
+      md: "2.3rem",
+      lg: "2.5rem",
+    },
+  },
   heroBackground: {
     width: { lg: "60%", md: "100%" },
     margin: "0 auto",
