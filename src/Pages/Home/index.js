@@ -19,8 +19,13 @@ const Home = () => {
             </Button>
           </Box>
         </Grid>
-        <Grid item sm={6} sx={styles.heroBackground}>
+        <Grid item xs={12} sm={6} sx={styles.heroBackground}>
           <Box sx={styles.backgroundWrapper}>
+            <Box sx={{ ...styles.animalBubble, ...styles.cat }}></Box>
+            <Box sx={{ ...styles.animalBubble, ...styles.dog }}></Box>
+            <Box sx={{ ...styles.animalBubble, ...styles.iguana }}></Box>
+            <Box sx={{ ...styles.animalBubble, ...styles.bird }}></Box>
+
             <img src={smilingDog} alt="Cão de óculos sorrindo" />
             <BgSvg />
           </Box>
