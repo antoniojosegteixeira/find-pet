@@ -10,9 +10,9 @@ const Home = () => {
     <Container sx={styles.container}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6} lg={6} sx={styles.heroInfo}>
-          <Box>
+          <Box sx={styles.heroInfoBox}>
             <Typography variant="h3" component="h1" sx={styles.title}>
-              FindPet te ajuda a encontrar seu animal perdido!
+              FindPet te ajuda a encontrar seu amigo perdido!
             </Typography>
             <Button variant="contained" sx={styles.button}>
               Registrar

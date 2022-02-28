@@ -10,12 +10,18 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     border: "1px solid red",
+    order: { xs: 2, sm: 1, md: 1, lg: 1 },
+  },
+  heroInfoBox: {
+    padding: "0 5px 0 5px",
+    textAlign: { xs: "center", sm: "start" },
   },
   title: { fontFamily: "Pangolin" },
   heroBackground: {
     width: { lg: "60%", md: "100%" },
     margin: "0 auto",
     border: "1px solid ",
+    order: { xs: 1, sm: 2, md: 2, lg: 2 },
   },
   button: {
     marginTop: 4,
