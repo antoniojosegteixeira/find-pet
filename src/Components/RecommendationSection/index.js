@@ -18,7 +18,7 @@ export default function RecommendationSection() {
   return (
     <Container sx={styles.container} maxWidth="false">
       <Grid container spacing={4} sx={styles.gridContainer}>
-        <Grid item sm={4} sx={styles.gridItem}>
+        <Grid item xs={12} sm={4} sx={styles.gridItem}>
           <Box sx={styles.card}>
             <Box sx={styles.imgWrapper}>
               <Box sx={styles.imgBackground}></Box>
@@ -40,11 +40,11 @@ export default function RecommendationSection() {
             </CardContent>
           </Box>
         </Grid>
-        <Grid item sm={4} sx={styles.gridItem}>
+        <Grid item xs={12} sm={4} sx={styles.gridItem}>
           <Box sx={styles.card}>
             <Box sx={styles.imgWrapper}>
               <Box sx={styles.imgBackground}></Box>
-              <img src={client2} alt="Mulher abraçada com cachorro" />
+              <img src={client2} alt="Mulher abraçada com gato" />
             </Box>
             <CardContent sx={styles.cardInfo}>
               <Typography
@@ -62,11 +62,11 @@ export default function RecommendationSection() {
             </CardContent>
           </Box>
         </Grid>
-        <Grid item sm={4} sx={styles.gridItem}>
+        <Grid item xs={12} sm={4} sx={styles.gridItem}>
           <Box sx={styles.card}>
             <Box sx={styles.imgWrapper}>
               <Box sx={styles.imgBackground}></Box>
-              <img src={client3} alt="Homem abraçado com cachorro" />
+              <img src={client3} alt="Mulher abraçada com gato" />
             </Box>
             <CardContent sx={styles.cardInfo}>
               <Typography
