@@ -1,6 +1,9 @@
 import React from "react";
-import { Container, Grid, Typography } from "@mui/material";
 import styles from "./styles";
+
+import { Container, Grid, Typography, Box } from "@mui/material";
+import { BgSvg } from "./svgs";
+import smilingDog from "../../Assets/Images/smiling-dog.png";
 
 const Home = () => {
   return (
@@ -10,6 +13,12 @@ const Home = () => {
           <Typography variant="h3" component="h1" sx={styles.title}>
             FindPet te ajuda a encontrar seu animal perdido!
           </Typography>
+        </Grid>
+        <Grid item sm={6} sx={styles.heroBackground}>
+          <Box sx={styles.backgroundWrapper}>
+            <img src={smilingDog} alt="Cão de óculos sorrindo" />
+            <BgSvg />
+          </Box>
         </Grid>
       </Grid>
     </Container>
