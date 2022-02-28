@@ -1,15 +1,7 @@
 import React from "react";
 import styles from "./styles";
 
-import {
-  Container,
-  Grid,
-  Typography,
-  Box,
-  Button,
-  Card,
-  CardContent,
-} from "@mui/material";
+import { Container, Grid, Typography, Box, CardContent } from "@mui/material";
 import client1 from "../../Assets/Images/client1.png";
 import client2 from "../../Assets/Images/client2.png";
 import client3 from "../../Assets/Images/client3.png";
