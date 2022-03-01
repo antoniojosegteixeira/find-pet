@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles";
 
+import { Link } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -9,7 +10,6 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import Logo from "../Svg/Logo";
 
 export default function Layout({ children }) {
@@ -25,16 +25,20 @@ export default function Layout({ children }) {
             </Link>
 
             <Box sx={{ flexGrow: 1 }}></Box>
-            <Button color="primary" variant="contained" sx={styles.button}>
-              <Typography variant="p" sx={styles.buttonText}>
-                Entrar
-              </Typography>
-            </Button>
-            <Button color="secondary" variant="contained" sx={styles.button}>
-              <Typography variant="p" sx={styles.buttonText}>
-                Registrar
-              </Typography>
-            </Button>
+            <Link to="/login">
+              <Button color="primary" variant="contained" sx={styles.button}>
+                <Typography variant="p" sx={styles.buttonText}>
+                  Entrar
+                </Typography>
+              </Button>
+            </Link>
+            <Link to="/registrar">
+              <Button color="secondary" variant="contained" sx={styles.button}>
+                <Typography variant="p" sx={styles.buttonText}>
+                  Registrar
+                </Typography>
+              </Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </Box>
