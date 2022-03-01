@@ -5,6 +5,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registrationSchema from "../../Validation/Schemas/registration-schema";
 
+import { Container, Form, Grid, Typography, Box } from "@mui/material";
+import Layout from "../../Components/Layout";
+import Svg from "../../Components/Svg/RegistroSvg";
+import boxDog from "../../Assets/Images/box-dog.png";
+import styles from "./styles";
+
 export default function Register() {
   const dispatch = useDispatch();
 
@@ -22,62 +28,22 @@ export default function Register() {
   };
 
   return (
-    <div data-testid="register-wrapper">
-      register
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          data-testid="register-name-input"
-          name="name"
-          {...register("name")}
-        ></input>
-        <br />
-        <span data-testid="register-name-error">{errors.name?.message}</span>
-        <input
-          data-testid="register-email-input"
-          name="email"
-          {...register("email")}
-        ></input>
-        <br />
-        <span data-testid="register-email-error">{errors.email?.message}</span>
-
-        <input
-          data-testid="register-city-input"
-          name="city"
-          {...register("city")}
-        ></input>
-        <span data-testid="register-city-error">{errors.city?.message}</span>
-        <br />
-        <input
-          data-testid="register-state-input"
-          name="state"
-          {...register("state")}
-        ></input>
-        <span data-testid="register-state-error">{errors.state?.message}</span>
-        <br />
-        <input
-          data-testid="register-password-input"
-          name="password"
-          type="password"
-          {...register("password")}
-        ></input>
-        <span data-testid="register-password-error">
-          {errors.password?.message}
-        </span>
-        <br />
-        <input
-          data-testid="register-confpassword-input"
-          name="confPassword"
-          type="password"
-          {...register("confPassword")}
-        ></input>
-        <br />
-        <span data-testid="register-confpassword-error">
-          {errors.confPassword?.message}
-        </span>
-        <button onSubmit={onSubmit} data-testid="register-submit-button">
-          Enviar
-        </button>
-      </form>
-    </div>
+    <Layout>
+      <Container sx={styles.container} maxWidth="false">
+        <Grid container>
+          <Grid item xs={12} md={6}>
+            <Typography variant="h3" component="h1" sx={styles.title}>
+              Registre-se
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={styles.boxWrapper}>
+              <Svg />
+              <img src={boxDog} alt="Cão em uma caixa de papelão" />
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </Layout>
   );
 }
