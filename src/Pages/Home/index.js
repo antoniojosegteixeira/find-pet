@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles";
 
 import { Container, Grid, Typography, Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import Layout from "../../Components/Layout";
 import RecommendationSection from "../../Components/RecommendationSection/";
 import FirstSectionSvg from "./svg/FirstSectionSvg";
@@ -19,9 +20,11 @@ const Home = () => {
               <Typography variant="h3" component="h1" sx={styles.title}>
                 FindPet te ajuda a encontrar seu amigo perdido!
               </Typography>
-              <Button variant="contained" sx={styles.button}>
-                Registrar
-              </Button>
+              <Link to="/registrar">
+                <Button variant="contained" sx={styles.button}>
+                  Registrar
+                </Button>
+              </Link>
             </Box>
           </Grid>
           <Grid item xs={12} sm={7} sx={styles.heroBackground}>
@@ -53,9 +56,11 @@ const Home = () => {
                 Milhares de animais são perdidos todos os anos. Ajude donos de
                 pet a reencontrarem seus animais.
               </Typography>
-              <Button variant="contained" sx={styles.button}>
-                Entrar
-              </Button>
+              <Link to="/login">
+                <Button variant="contained" sx={styles.button}>
+                  Entrar
+                </Button>
+              </Link>
             </Box>
           </Grid>
           <Grid
