@@ -17,7 +17,7 @@ const styles = {
   },
   form: {
     mt: 2,
-    "& .MuiTextField-root": { width: "100%" },
+    "& .MuiTextField-root": { width: "100%", mt: 2 },
   },
 };
 

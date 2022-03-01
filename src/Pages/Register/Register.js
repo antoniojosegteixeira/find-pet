@@ -29,6 +29,10 @@ export default function Register() {
   } = useForm({
     defaultValues: {
       fullName: "",
+      email: "",
+      city: "",
+      password: "",
+      confPassword: "",
     },
     resolver: yupResolver(registrationSchema),
   });
@@ -66,6 +70,68 @@ export default function Register() {
                       id="fullname-field"
                       label="Nome completo"
                       helperText={errors.fullName?.message}
+                    />
+                  )}
+                />
+              </div>
+              <div>
+                <Controller
+                  name="email"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={errors.email ? true : false}
+                      id="email-field"
+                      label="Email"
+                      helperText={errors.email?.message}
+                    />
+                  )}
+                />
+              </div>
+              <div>
+                <Controller
+                  name="city"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={errors.city ? true : false}
+                      id="city-field"
+                      label="Cidade"
+                      helperText={errors.city?.message}
+                    />
+                  )}
+                />
+              </div>
+              <div>
+                <Controller
+                  name="password"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={errors.password ? true : false}
+                      id="password-field"
+                      label="Senha"
+                      type="password"
+                      helperText={errors.password?.message}
+                    />
+                  )}
+                />
+              </div>
+              <div>
+                <Controller
+                  name="confPassword"
+                  control={control}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      error={errors.confPassword ? true : false}
+                      id="conf-password-field"
+                      label="Confirme a senha"
+                      type="password"
+                      helperText={errors.confPassword?.message}
                     />
                   )}
                 />
