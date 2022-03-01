@@ -12,6 +12,13 @@ const styles = {
       left: "10%",
     },
   },
+  title: {
+    mt: 3,
+  },
+  form: {
+    mt: 2,
+    "& .MuiTextField-root": { width: "100%" },
+  },
 };
 
 export default styles;

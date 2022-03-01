@@ -3,7 +3,7 @@ import * as yup from "yup";
 export const registerErrMgs = {
   required: "Campo obrigatório",
   invalidType: "Campo inválido",
-  nameMin: "Nome deve conter no mínimo 2 caracteres",
+  nameMin: "Nome deve conter no mínimo 4 caracteres",
   invalidEmail: "Insira um email válido",
   minPassword: "Senha deve conter no mínimo 6 dígitos",
   maxPassword: "Senha deve conter no máximo 40 dígitos",
@@ -11,9 +11,9 @@ export const registerErrMgs = {
 };
 
 const registrationSchema = yup.object().shape({
-  name: yup
+  fullName: yup
     .string(registerErrMgs.invalidType)
-    .min(2, registerErrMgs.nameMin)
+    .min(4, registerErrMgs.nameMin)
     .required(registerErrMgs.required),
   email: yup
     .string(registerErrMgs.invalidType)
