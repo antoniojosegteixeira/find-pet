@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../Redux/Slices/User/requests.js";
 import { useForm, Controller } from "react-hook-form";
@@ -13,6 +13,10 @@ import {
   Box,
   TextField,
   Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import Layout from "../../Components/Layout";
 import Svg from "../../Components/Svg/RegistroSvg";
@@ -21,6 +25,7 @@ import styles from "./styles";
 
 export default function Register() {
   const dispatch = useDispatch();
+  const [userState, setUserState] = useState("AC");
 
   const {
     control,
@@ -41,8 +46,6 @@ export default function Register() {
     // Dispatch as action to redux
     //dispatch(registerUser(data));
   };
-
-  console.log(errors);
 
   return (
     <Layout>
@@ -89,7 +92,7 @@ export default function Register() {
                   )}
                 />
               </div>
-              <div>
+              <Box sx={styles.addressBox}>
                 <Controller
                   name="city"
                   control={control}
@@ -103,7 +106,22 @@ export default function Register() {
                     />
                   )}
                 />
-              </div>
+
+                <FormControl fullWidth sx={styles.stateInput}>
+                  <InputLabel id="state-field-label">Estado</InputLabel>
+                  <Select
+                    labelId="state-field"
+                    id="state-field"
+                    value={userState}
+                    label="Estado"
+                    onChange={(e) => setUserState(e.target.value)}
+                  >
+                    <MenuItem value="AC">AC</MenuItem>
+                    <MenuItem value="AM">AM</MenuItem>
+                    <MenuItem value="AP">AP</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
               <div>
                 <Controller
                   name="password"
@@ -141,7 +159,7 @@ export default function Register() {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Box sx={styles.boxWrapper}>
+            <Box sx={styles.svgWrapper}>
               <Svg />
               <img src={boxDog} alt="Cão em uma caixa de papelão" />
             </Box>
