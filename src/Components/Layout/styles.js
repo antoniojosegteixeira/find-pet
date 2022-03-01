@@ -1,4 +1,9 @@
 const styles = {
+  screen: {
+    minHeight: "80vh",
+    position: "relative",
+    pb: 5,
+  },
   appbar: {
     backgroundColor: "white",
   },
@@ -15,6 +20,9 @@ const styles = {
   },
   buttonText: {
     fontSize: ".8rem",
+  },
+  footer: {
+    flexGrow: 1,
   },
 };
 

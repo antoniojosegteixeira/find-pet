@@ -38,8 +38,8 @@ export default function Layout({ children }) {
           </Toolbar>
         </AppBar>
       </Box>
-      {children}
-      <Box sx={{ flexGrow: 1, mt: 5 }}>
+      <Box sx={styles.screen}>{children}</Box>
+      <Box sx={styles.footer}>
         <AppBar position="static" sx={styles.appbar}>
           <Toolbar>
             <Typography color="primary" variant="subtitle2">
