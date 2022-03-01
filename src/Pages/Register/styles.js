@@ -1,16 +1,28 @@
 const styles = {
   container: {
     mt: { xs: 1, sm: 3 },
-    maxWidth: "1100px",
   },
   svgWrapper: {
+    pt: 2,
     position: "relative",
+    display: "flex",
+    alignContent: "middle",
+    alignItems: "center",
+    justifyContent: "center",
+    "& svg": {
+      maxWidth: "488px",
+      top: "50%",
+    },
     "& img": {
       position: "absolute",
-      width: "85%",
-      top: "4%",
-      left: "10%",
+      zIndex: 10,
+      maxWidth: "450px",
+      width: "100%",
     },
+  },
+  formWrapper: {
+    maxWidth: "550px",
+    margin: "0 auto",
   },
   title: {
     mt: 3,
@@ -22,6 +34,19 @@ const styles = {
   },
   addressBox: { display: "flex", flexDirection: "row" },
   stateInput: { mt: 2, ml: 1, maxWidth: "90px" },
+  submitButton: {
+    mt: 2,
+    py: 1.2,
+  },
 };
 
 export default styles;
+
+/*
+"& img": {
+      position: "absolute",
+      width: "85%",
+      top: "4%",
+      left: "10%",
+    },
+*/

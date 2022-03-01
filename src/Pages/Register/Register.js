@@ -49,112 +49,122 @@ export default function Register() {
 
   return (
     <Layout>
-      <Container sx={styles.container} maxWidth="false">
-        <Grid container>
+      <Container sx={styles.container}>
+        <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Typography variant="h3" component="h1" sx={styles.title}>
-              Registre-se
-            </Typography>
-            <Box
-              component="form"
-              sx={styles.form}
-              noValidate
-              autoComplete="off"
-              onSubmit={handleSubmit(onSubmit)}
-            >
-              <div>
-                <Controller
-                  name="fullName"
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      error={errors.fullName ? true : false}
-                      id="fullname-field"
-                      label="Nome completo"
-                      helperText={errors.fullName?.message}
-                    />
-                  )}
-                />
-              </div>
-              <div>
-                <Controller
-                  name="email"
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      error={errors.email ? true : false}
-                      id="email-field"
-                      label="Email"
-                      helperText={errors.email?.message}
-                    />
-                  )}
-                />
-              </div>
-              <Box sx={styles.addressBox}>
-                <Controller
-                  name="city"
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      error={errors.city ? true : false}
-                      id="city-field"
-                      label="Cidade"
-                      helperText={errors.city?.message}
-                    />
-                  )}
-                />
+            <Box sx={styles.formWrapper}>
+              <Typography variant="h3" component="h1" sx={styles.title}>
+                Registre-se
+              </Typography>
+              <Box
+                component="form"
+                sx={styles.form}
+                noValidate
+                autoComplete="off"
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <div>
+                  <Controller
+                    name="fullName"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        error={errors.fullName ? true : false}
+                        id="fullname-field"
+                        label="Nome completo"
+                        helperText={errors.fullName?.message}
+                      />
+                    )}
+                  />
+                </div>
+                <div>
+                  <Controller
+                    name="email"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        error={errors.email ? true : false}
+                        id="email-field"
+                        label="Email"
+                        helperText={errors.email?.message}
+                      />
+                    )}
+                  />
+                </div>
+                <Box sx={styles.addressBox}>
+                  <Controller
+                    name="city"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        error={errors.city ? true : false}
+                        id="city-field"
+                        label="Cidade"
+                        helperText={errors.city?.message}
+                      />
+                    )}
+                  />
 
-                <FormControl fullWidth sx={styles.stateInput}>
-                  <InputLabel id="state-field-label">Estado</InputLabel>
-                  <Select
-                    labelId="state-field"
-                    id="state-field"
-                    value={userState}
-                    label="Estado"
-                    onChange={(e) => setUserState(e.target.value)}
-                  >
-                    <MenuItem value="AC">AC</MenuItem>
-                    <MenuItem value="AM">AM</MenuItem>
-                    <MenuItem value="AP">AP</MenuItem>
-                  </Select>
-                </FormControl>
+                  <FormControl fullWidth sx={styles.stateInput}>
+                    <InputLabel id="state-field-label">Estado</InputLabel>
+                    <Select
+                      labelId="state-field"
+                      id="state-field"
+                      value={userState}
+                      label="Estado"
+                      onChange={(e) => setUserState(e.target.value)}
+                    >
+                      <MenuItem value="AC">AC</MenuItem>
+                      <MenuItem value="AM">AM</MenuItem>
+                      <MenuItem value="AP">AP</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+                <div>
+                  <Controller
+                    name="password"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        error={errors.password ? true : false}
+                        id="password-field"
+                        label="Senha"
+                        type="password"
+                        helperText={errors.password?.message}
+                      />
+                    )}
+                  />
+                </div>
+                <div>
+                  <Controller
+                    name="confPassword"
+                    control={control}
+                    render={({ field }) => (
+                      <TextField
+                        {...field}
+                        error={errors.confPassword ? true : false}
+                        id="conf-password-field"
+                        label="Confirme a senha"
+                        type="password"
+                        helperText={errors.confPassword?.message}
+                      />
+                    )}
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  sx={styles.submitButton}
+                >
+                  Enviar
+                </Button>
               </Box>
-              <div>
-                <Controller
-                  name="password"
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      error={errors.password ? true : false}
-                      id="password-field"
-                      label="Senha"
-                      type="password"
-                      helperText={errors.password?.message}
-                    />
-                  )}
-                />
-              </div>
-              <div>
-                <Controller
-                  name="confPassword"
-                  control={control}
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      error={errors.confPassword ? true : false}
-                      id="conf-password-field"
-                      label="Confirme a senha"
-                      type="password"
-                      helperText={errors.confPassword?.message}
-                    />
-                  )}
-                />
-              </div>
-              <Button type="submit">Enviar</Button>
             </Box>
           </Grid>
 
