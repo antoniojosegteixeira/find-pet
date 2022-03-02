@@ -7,13 +7,24 @@ import "./Styles/Global/index.css";
 import App from "./App";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./Styles/Theme/theme";
+import { SnackbarProvider } from "notistack";
+
+<App />;
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+      <SnackbarProvider
+        maxSnack={3}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+      >
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </SnackbarProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
