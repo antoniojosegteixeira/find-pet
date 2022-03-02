@@ -9,14 +9,17 @@ const styles = {
     alignContent: "middle",
     alignItems: "center",
     justifyContent: "center",
-    "& svg": {
-      maxWidth: "488px",
-      top: "50%",
-    },
+
     "& img": {
       position: "absolute",
       zIndex: 10,
       maxWidth: "450px",
+      width: "100%",
+    },
+
+    "& svg": {
+      position: "absolute",
+      maxWidth: "490px",
       width: "100%",
     },
   },
