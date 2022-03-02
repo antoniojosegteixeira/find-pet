@@ -4,19 +4,25 @@ import styles from "./styles";
 
 const FileDrop = () => {
   const [files, setFiles] = useState([]);
-  const { getRootProps, getInputProps, isDragAccept, isDragReject } =
-    useDropzone({
-      accept: "image/*",
-      onDrop: (acceptedFiles) => {
-        setFiles(
-          acceptedFiles.map((file) =>
-            Object.assign(file, {
-              preview: URL.createObjectURL(file),
-            })
-          )
-        );
-      },
-    });
+  const {
+    getRootProps,
+    getInputProps,
+    isDragAccept,
+    isDragReject,
+    fileRejections,
+  } = useDropzone({
+    accept: "image/*",
+    maxFiles: 5,
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
+  });
 
   const style = useMemo(
     () => ({
@@ -27,8 +33,8 @@ const FileDrop = () => {
     [isDragAccept, isDragReject]
   );
 
+  /// Image thumbnails
   const thumbnails = files.map((file) => {
-    console.log(file);
     return (
       <li key={file.path} style={styles.imageList}>
         <img src={file.preview} alt="" style={styles.image} />
@@ -45,6 +51,10 @@ const FileDrop = () => {
             ? "Arquivo não suportado"
             : "Clique ou arraste um arquivo"}
         </p>
+        {fileRejections.length > 0 &&
+          fileRejections[0]?.errors[0]?.code === "too-many-files" && (
+            <span>Limite máximo de imagens: 5</span>
+          )}
       </div>
       <aside>
         <ul style={styles.thumbsContainer}>{thumbnails}</ul>
