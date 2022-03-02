@@ -3,23 +3,22 @@ const styles = {
     mt: { xs: 1, sm: 3 },
   },
   svgWrapper: {
-    pt: 2,
+    mt: 2,
     position: "relative",
     display: "flex",
-    alignContent: "middle",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#C0D2ED",
+    overflow: "hidden",
 
     "& img": {
       position: "absolute",
-      zIndex: 10,
-      maxWidth: "450px",
       width: "100%",
+      left: "15%",
     },
 
     "& svg": {
-      position: "absolute",
-      maxWidth: "490px",
+      zIndex: 10,
       width: "100%",
     },
   },

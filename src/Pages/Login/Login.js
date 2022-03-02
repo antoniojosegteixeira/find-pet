@@ -48,7 +48,7 @@ export default function Login() {
   return (
     <Layout>
       <Container sx={styles.container}>
-        <Grid container spacing={3}>
+        <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
             <Box sx={styles.formWrapper}>
               <Typography variant="h3" component="h1" sx={styles.title}>
@@ -107,7 +107,12 @@ export default function Login() {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={6}></Grid>
+          <Grid item xs={12} md={5}>
+            <Box sx={styles.svgWrapper}>
+              <LoginSvg />
+              <img src={loginCat} alt="Gato cinza" />
+            </Box>
+          </Grid>
         </Grid>
       </Container>
     </Layout>
