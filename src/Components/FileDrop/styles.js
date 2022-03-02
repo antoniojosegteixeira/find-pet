@@ -4,7 +4,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "20px",
+    padding: "100px",
     borderWidth: 4,
     borderRadius: 2,
     borderColor: "#2196f3",
