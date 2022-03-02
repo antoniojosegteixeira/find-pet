@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import createPostSchema from "../../Validation/Schemas/create-post-schema";
 import { useSelector } from "react-redux";
 import styles from "./styles";
+import { states } from "../../Utils/stateList";
 
 import Layout from "../../Components/Layout";
 import FileDrop from "../../Components/FileDrop";
@@ -134,9 +135,16 @@ export default function CreatePost() {
                   label="Estado"
                   onChange={(e) => setUserState(e.target.value)}
                 >
-                  <MenuItem value="AC">AC</MenuItem>
-                  <MenuItem value="AM">AM</MenuItem>
-                  <MenuItem value="AP">AP</MenuItem>
+                  {states.map((item) => {
+                    return (
+                      <MenuItem
+                        value={Object.keys(item)[0]}
+                        key={Object.keys(item)[0]}
+                      >
+                        {Object.values(item)[0]}
+                      </MenuItem>
+                    );
+                  })}
                 </Select>
               </FormControl>
             </Box>
