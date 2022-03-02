@@ -27,14 +27,14 @@ export default function Layout({ children }) {
             <Box sx={{ flexGrow: 1 }}></Box>
             <Link to="/login">
               <Button color="primary" variant="contained" sx={styles.button}>
-                <Typography variant="p" sx={styles.buttonText}>
+                <Typography variant="p" sx={styles.buttonText} color="white">
                   Entrar
                 </Typography>
               </Button>
             </Link>
             <Link to="/registrar">
               <Button color="secondary" variant="contained" sx={styles.button}>
-                <Typography variant="p" sx={styles.buttonText}>
+                <Typography variant="p" sx={styles.buttonText} color="primary">
                   Registrar
                 </Typography>
               </Button>
