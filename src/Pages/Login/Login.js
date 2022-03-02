@@ -107,8 +107,8 @@ export default function Login() {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={5}>
-            <Box sx={styles.svgWrapper}>
+          <Grid item xs={12} md={6} sx={styles.imageGrid}>
+            <Box sx={styles.svgWrapperBox}>
               <LoginSvg />
               <img src={loginCat} alt="Gato cinza" />
             </Box>

@@ -2,7 +2,11 @@ const styles = {
   container: {
     mt: { xs: 1, sm: 3 },
   },
-  svgWrapper: {
+  imageGrid: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  svgWrapperBox: {
     mt: 2,
     position: "relative",
     display: "flex",
@@ -10,6 +14,8 @@ const styles = {
     justifyContent: "center",
     backgroundColor: "#C0D2ED",
     overflow: "hidden",
+    maxWidth: "450px",
+    width: "100%",
 
     "& img": {
       position: "absolute",
