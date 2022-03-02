@@ -41,9 +41,8 @@ const styles = {
     mt: 2,
     "& .MuiTextField-root": { width: "100%", mt: 2 },
   },
-  inlineForm: { display: "flex", flexDirection: "row" },
-  stateInput: { mt: 2, ml: 1, maxWidth: "90px" },
-  speciesInput: { mt: 2, ml: 1, maxWidth: "150px" },
+  inlineForm: { display: "flex", flexDirection: { xs: "column", sm: "row" } },
+  smallInput: { mt: 2, ml: { sm: 1 }, maxWidth: { sm: "150px" } },
   submitButton: {
     mt: 2,
     py: 1.2,

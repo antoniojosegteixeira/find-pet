@@ -93,7 +93,7 @@ export default function CreatePost() {
                   />
                 )}
               />
-              <FormControl fullWidth sx={styles.speciesInput}>
+              <FormControl fullWidth sx={styles.smallInput}>
                 <InputLabel id="species--field-label">Espécie</InputLabel>
                 <Select
                   labelId="species-field"
@@ -126,7 +126,7 @@ export default function CreatePost() {
                   />
                 )}
               />
-              <FormControl fullWidth sx={styles.stateInput}>
+              <FormControl fullWidth sx={styles.smallInput}>
                 <InputLabel id="state-field-label">Estado</InputLabel>
                 <Select
                   labelId="state-field"
