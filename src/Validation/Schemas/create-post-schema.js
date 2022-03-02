@@ -10,7 +10,10 @@ const createPostSchema = yup.object().shape({
   animalName: yup
     .string(createPostErrMsgs.invalidType)
     .required(createPostErrMsgs.required),
-  color: yup
+  breed: yup
+    .string(createPostErrMsgs.invalidType)
+    .required(createPostErrMsgs.required),
+  age: yup
     .string(createPostErrMsgs.invalidType)
     .required(createPostErrMsgs.required),
   description: yup
