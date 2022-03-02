@@ -29,22 +29,11 @@ export default function CreatePost() {
   const [species, setSpecies] = useState("dog");
   const [userState, setUserState] = useState("AC");
   const [postType, setPostType] = useState("lost");
-  const [images, setImages] = useState(null);
-
-  const handleFileSelected = (e) => {
-    const files = e.target.files;
-    for (let i = 0; i < Object.keys(files).length; i++) {
-      if (files[i].size / 1024 / 1024 > 5) {
-        window.alert("Tamanho máximo de arquivo: 5mb");
-        break;
-      }
-    }
-    setImages(files);
-  };
+  const [files, setFiles] = useState([]);
 
   const onSubmit = (formData) => {
     // Dispatch as action to redux
-    console.log({ ...formData, species, images });
+    console.log({ ...formData, species, files });
   };
 
   const {
@@ -55,10 +44,10 @@ export default function CreatePost() {
     defaultValues: {
       animalName: "",
       breed: "",
-      species: "",
       city: "",
       description: "",
     },
+    resolver: yupResolver(createPostSchema),
   });
 
   return (
@@ -75,7 +64,7 @@ export default function CreatePost() {
           autoComplete="off"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <FileDrop />
+          <FileDrop files={files} setFiles={setFiles} />
           <Box sx={styles.formWrapper}>
             <Box sx={styles.toggleButtonWrapper}>
               <ToggleButtonGroup
