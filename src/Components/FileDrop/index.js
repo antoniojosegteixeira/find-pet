@@ -1,9 +1,8 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import styles from "./styles";
 
-const FileDrop = () => {
-  const [files, setFiles] = useState([]);
+const FileDrop = ({ files, setFiles }) => {
   const {
     getRootProps,
     getInputProps,
