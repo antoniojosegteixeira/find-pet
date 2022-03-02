@@ -6,6 +6,7 @@ import createPostSchema from "../../Validation/Schemas/create-post-schema";
 import { useSelector } from "react-redux";
 import styles from "./styles";
 import { states } from "../../Utils/stateList";
+import { useSnackbar } from "notistack";
 
 import Layout from "../../Components/Layout";
 import FileDrop from "../../Components/FileDrop";
@@ -31,8 +32,14 @@ export default function CreatePost() {
   const [postType, setPostType] = useState("lost");
   const [files, setFiles] = useState([]);
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const onSubmit = (formData) => {
     // Dispatch as action to redux
+    if (files.length === 0) {
+      enqueueSnackbar("Insira uma imagem", { variant: "error" });
+      return;
+    }
     console.log({ ...formData, species, files });
   };
 
