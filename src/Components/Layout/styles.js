@@ -23,6 +23,10 @@ const styles = {
   buttonText: {
     fontSize: ".8rem",
   },
+  buttonWrapper: { display: { xs: "none", md: "block" } },
+  menuWrapper: {
+    display: { xs: "block", md: "none" },
+  },
   footer: {
     flexGrow: 1,
     display: "flex",

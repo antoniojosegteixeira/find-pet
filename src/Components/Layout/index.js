@@ -11,6 +11,7 @@ import {
   IconButton,
 } from "@mui/material";
 import Logo from "../Svg/Logo";
+import HeaderMenu from "../HeaderMenu";
 
 export default function Layout({ children }) {
   return (
@@ -25,20 +26,33 @@ export default function Layout({ children }) {
             </Link>
 
             <Box sx={{ flexGrow: 1 }}></Box>
-            <Link to="/login">
-              <Button color="primary" variant="contained" sx={styles.button}>
-                <Typography variant="p" sx={styles.buttonText} color="white">
-                  Entrar
-                </Typography>
-              </Button>
-            </Link>
-            <Link to="/registrar">
-              <Button color="secondary" variant="contained" sx={styles.button}>
-                <Typography variant="p" sx={styles.buttonText} color="primary">
-                  Registrar
-                </Typography>
-              </Button>
-            </Link>
+            <Box sx={styles.buttonWrapper}>
+              <Link to="/login">
+                <Button color="primary" variant="contained" sx={styles.button}>
+                  <Typography variant="p" sx={styles.buttonText} color="white">
+                    Entrar
+                  </Typography>
+                </Button>
+              </Link>
+              <Link to="/registrar">
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  sx={styles.button}
+                >
+                  <Typography
+                    variant="p"
+                    sx={styles.buttonText}
+                    color="primary"
+                  >
+                    Registrar
+                  </Typography>
+                </Button>
+              </Link>
+            </Box>
+            <Box sx={styles.menuWrapper}>
+              <HeaderMenu />
+            </Box>
           </Toolbar>
         </AppBar>
       </Box>
