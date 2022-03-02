@@ -23,7 +23,8 @@ import {
 
 export default function CreatePost() {
   const dispatch = useDispatch();
-  const [species, setSpecies] = useState("cão");
+  const [species, setSpecies] = useState("cao");
+  const [userState, setUserState] = useState("AC");
   const [images, setImages] = useState(null);
 
   const handleFileSelected = (e) => {
@@ -77,33 +78,40 @@ export default function CreatePost() {
                 />
               )}
             />
-            <Controller
-              name="breed"
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  error={errors.breed ? true : false}
-                  id="breed-field"
-                  label="Raça"
-                  helperText={errors.breed?.message}
-                />
-              )}
-            />
-            <Controller
-              name="age"
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  error={errors.age ? true : false}
-                  id="age-field"
-                  label="Idade"
-                  helperText={errors.age?.message}
-                />
-              )}
-            />
-            <Box>
+            <Box sx={styles.inlineForm}>
+              <Controller
+                name="breed"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    error={errors.breed ? true : false}
+                    id="breed-field"
+                    label="Raça"
+                    helperText={errors.breed?.message}
+                  />
+                )}
+              />
+              <FormControl fullWidth sx={styles.speciesInput}>
+                <InputLabel id="species--field-label">Espécie</InputLabel>
+                <Select
+                  labelId="species-field"
+                  id="species-field"
+                  value={species}
+                  label="Estado"
+                  onChange={(e) => setSpecies(e.target.value)}
+                >
+                  <MenuItem value="cao">Cão</MenuItem>
+                  <MenuItem value="gato">Gato</MenuItem>
+                  <MenuItem value="roedor">Roedor</MenuItem>
+                  <MenuItem value="equino">Equino</MenuItem>
+                  <MenuItem value="ave">Ave</MenuItem>
+                  <MenuItem value="reptil">Réptil</MenuItem>
+                  <MenuItem value="outro">Outro</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Box sx={styles.inlineForm}>
               <Controller
                 name="city"
                 control={control}
@@ -117,6 +125,20 @@ export default function CreatePost() {
                   />
                 )}
               />
+              <FormControl fullWidth sx={styles.stateInput}>
+                <InputLabel id="state-field-label">Estado</InputLabel>
+                <Select
+                  labelId="state-field"
+                  id="state-field"
+                  value={userState}
+                  label="Estado"
+                  onChange={(e) => setUserState(e.target.value)}
+                >
+                  <MenuItem value="AC">AC</MenuItem>
+                  <MenuItem value="AM">AM</MenuItem>
+                  <MenuItem value="AP">AP</MenuItem>
+                </Select>
+              </FormControl>
             </Box>
             <Controller
               name="description"
