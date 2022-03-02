@@ -23,6 +23,21 @@ const styles = {
     borderColor: "#ff1744",
     color: "#ff1744",
   },
+  thumbsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    mt: 2,
+  },
+  imageList: {
+    width: "100px",
+    position: "relative",
+    listStyle: "none",
+    margin: "3px 4px",
+  },
+  image: {
+    width: "100%",
+  },
 };
 
 export default styles;
