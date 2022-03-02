@@ -26,7 +26,7 @@ import {
 
 export default function CreatePost() {
   const dispatch = useDispatch();
-  const [species, setSpecies] = useState("cao");
+  const [species, setSpecies] = useState("dog");
   const [userState, setUserState] = useState("AC");
   const [postType, setPostType] = useState("lost");
   const [images, setImages] = useState(null);
@@ -51,7 +51,15 @@ export default function CreatePost() {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      animalName: "",
+      breed: "",
+      species: "",
+      city: "",
+      description: "",
+    },
+  });
 
   return (
     <Layout>
@@ -120,13 +128,13 @@ export default function CreatePost() {
                   label="Estado"
                   onChange={(e) => setSpecies(e.target.value)}
                 >
-                  <MenuItem value="cao">Cão</MenuItem>
-                  <MenuItem value="gato">Gato</MenuItem>
-                  <MenuItem value="roedor">Roedor</MenuItem>
-                  <MenuItem value="equino">Equino</MenuItem>
-                  <MenuItem value="ave">Ave</MenuItem>
-                  <MenuItem value="reptil">Réptil</MenuItem>
-                  <MenuItem value="outro">Outro</MenuItem>
+                  <MenuItem value="dog">Cão</MenuItem>
+                  <MenuItem value="cat">Gato</MenuItem>
+                  <MenuItem value="rodent">Roedor</MenuItem>
+                  <MenuItem value="equine">Equino</MenuItem>
+                  <MenuItem value="bird">Ave</MenuItem>
+                  <MenuItem value="reptile">Réptil</MenuItem>
+                  <MenuItem value="other">Outro</MenuItem>
                 </Select>
               </FormControl>
             </Box>
