@@ -4,6 +4,7 @@ let theme = createTheme({
   typography: {
     p: {
       fontFamily: "Roboto, Raleway, Arial",
+      color: "#3F4144",
     },
     h3: {
       fontFamily: "Pangolin",
