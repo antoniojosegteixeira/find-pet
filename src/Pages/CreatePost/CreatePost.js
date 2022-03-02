@@ -50,18 +50,20 @@ export default function CreatePost() {
 
   return (
     <Layout>
-      <Container sx={styles.container}>
-        <Box sx={styles.formWrapper}>
-          <Typography variant="h3" component="h1" sx={styles.title}>
-            Criar novo post
-          </Typography>
-          <Box
-            component="form"
-            sx={styles.form}
-            noValidate
-            autoComplete="off"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+      <Container sx={styles.container} maxWidth="false">
+        <Typography variant="h3" component="h1" sx={styles.title}>
+          Criar novo post
+        </Typography>
+
+        <Box
+          component="form"
+          sx={styles.form}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <FileDrop />
+          <Box sx={styles.formWrapper}>
             <Controller
               name="animalName"
               control={control}
@@ -143,7 +145,6 @@ export default function CreatePost() {
           </Box>
         </Box>
       </Container>
-      <FileDrop />
     </Layout>
   );
 }
