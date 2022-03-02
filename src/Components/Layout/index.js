@@ -14,7 +14,7 @@ import Logo from "../Svg/Logo";
 
 export default function Layout({ children }) {
   return (
-    <>
+    <Box sx={styles.screen}>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" sx={styles.appbar}>
           <Toolbar>
@@ -42,7 +42,7 @@ export default function Layout({ children }) {
           </Toolbar>
         </AppBar>
       </Box>
-      <Box sx={styles.screen}>{children}</Box>
+      {children}
       <Box sx={styles.footer}>
         <AppBar position="static" sx={styles.appbar}>
           <Toolbar>
@@ -62,6 +62,6 @@ export default function Layout({ children }) {
           </Toolbar>
         </AppBar>
       </Box>
-    </>
+    </Box>
   );
 }

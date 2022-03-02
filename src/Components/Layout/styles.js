@@ -1,8 +1,10 @@
 const styles = {
   screen: {
-    minHeight: "80vh",
+    minHeight: "100vh",
     position: "relative",
-    pb: 5,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   appbar: {
     backgroundColor: "white",
@@ -23,6 +25,8 @@ const styles = {
   },
   footer: {
     flexGrow: 1,
+    display: "flex",
+    alignItems: "end",
   },
 };
 
