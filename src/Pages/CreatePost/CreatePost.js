@@ -6,6 +6,7 @@ import createPostSchema from "../../Validation/Schemas/create-post-schema";
 import { useSelector } from "react-redux";
 
 import Layout from "../../Components/Layout";
+import FileDrop from "../../Components/FileDrop";
 
 export default function CreatePost() {
   const dispatch = useDispatch();
@@ -145,6 +146,7 @@ export default function CreatePost() {
           <button type="submit" data-testid="create-post-submit-button">
             Enviar
           </button>
+          <FileDrop />
         </form>
       </div>
     </Layout>

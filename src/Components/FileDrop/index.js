@@ -1,27 +1,31 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
-import "./styles.css";
+import styles from "./styles";
 
-const FileDrop = (props) => {
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+const FileDrop = () => {
+  const { getRootProps, getInputProps, isDragAccept, isDragReject } =
+    useDropzone({ accept: "image/*" });
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
+  const style = useMemo(
+    () => ({
+      ...styles.baseStyle,
+      ...(isDragAccept ? styles.acceptStyle : {}),
+      ...(isDragReject ? styles.rejectStyle : {}),
+    }),
+    [isDragAccept, isDragReject]
+  );
 
   return (
-    <section>
-      <div {...getRootProps({ className: "dropzone" })}>
+    <div className="container">
+      <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <p>Clique ou arraste um arquivo</p>
+        <p>
+          {isDragReject
+            ? "Arquivo não suportado"
+            : "Clique ou arraste um arquivo"}
+        </p>
       </div>
-      <aside>
-        <h4>Files</h4>
-        <ul>{files}</ul>
-      </aside>
-    </section>
+    </div>
   );
 };
 
