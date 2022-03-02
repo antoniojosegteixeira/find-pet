@@ -1,6 +1,7 @@
 const styles = {
   container: {
     mt: { xs: 1, sm: 3 },
+    mb: 3,
     maxWidth: 700,
   },
   imageGrid: {
@@ -46,6 +47,19 @@ const styles = {
   submitButton: {
     mt: 2,
     py: 1.2,
+  },
+  toggleButtonWrapper: {
+    mt: 2,
+    display: "flex",
+    justifyContent: "center",
+  },
+  toggleButton: {
+    "& .MuiToggleButton-root.Mui-selected": {
+      backgroundColor: "rgb(125 144 151 / 46%)",
+    },
+    "& .MuiToggleButton-root.Mui-selected:hover": {
+      backgroundColor: "rgb(125 144 151 / 46%)",
+    },
   },
 };
 

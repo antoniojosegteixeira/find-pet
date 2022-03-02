@@ -20,12 +20,15 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  ToggleButtonGroup,
+  ToggleButton,
 } from "@mui/material";
 
 export default function CreatePost() {
   const dispatch = useDispatch();
   const [species, setSpecies] = useState("cao");
   const [userState, setUserState] = useState("AC");
+  const [postType, setPostType] = useState("lost");
   const [images, setImages] = useState(null);
 
   const handleFileSelected = (e) => {
@@ -66,6 +69,21 @@ export default function CreatePost() {
         >
           <FileDrop />
           <Box sx={styles.formWrapper}>
+            <Box sx={styles.toggleButtonWrapper}>
+              <ToggleButtonGroup
+                color="primary"
+                value={postType}
+                exclusive
+                onChange={(e) => {
+                  setPostType(e.target.value);
+                }}
+                sx={styles.toggleButton}
+              >
+                <ToggleButton value="lost">Perdi meu pet</ToggleButton>
+                <ToggleButton value="found">Encontrei um pet</ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
+
             <Controller
               name="animalName"
               control={control}
