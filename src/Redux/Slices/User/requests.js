@@ -15,21 +15,15 @@ export const loginUser = createAsyncThunk(
 
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async (formData) => {
-    const { data } = await axios.post("http://localhost:5000/register", {
-      data: formData,
-    });
-    return data;
-  }
-);
-
-export const createPost = createAsyncThunk(
-  "post/createPost",
-  async (formData) => {
-    const { data } = await axios.post("http://localhost:5000/create-post", {
-      data: formData,
-    });
-    return data;
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post("http://localhost:5000/register", {
+        data: formData,
+      });
+      return response.data.user;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 
@@ -54,8 +48,8 @@ const registerExtraReducer = {
   [registerUser.fulfilled]: (state, action) => {
     return { ...state, loginStatus: "success", user: action.payload };
   },
-  [registerUser.rejected]: (state, action) => {
-    return { ...state, loginStatus: "failed" };
+  [registerUser.rejected]: (state, { payload }) => {
+    return { ...state, loginStatus: "failed", error: payload };
   },
 };
 

@@ -5,14 +5,15 @@ import reducers from "./reducers";
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    user: null,
-    loginStatus: null,
+    user: {},
+    loginStatus: "",
+    error: "",
   },
   reducers: reducers,
   extraReducers: extraReducers,
 });
 
 //export const { } = userSlice.actions;
-export const selectUser = (state) => state.user.user;
+export const selectUser = (state) => state.user;
 export const selectLoginStatus = (state) => state.user.loginStatus;
 export default userSlice.reducer;
