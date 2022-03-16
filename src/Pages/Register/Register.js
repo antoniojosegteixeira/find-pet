@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../Redux/Slices/User/requests.js";
+import { selectUser } from "../../Redux/Slices/User/userSlice";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registrationSchema from "../../Validation/Schemas/registration-schema";
+import { useSnackbar } from "notistack";
 
 import {
   Container,
@@ -25,7 +27,9 @@ import styles from "./styles";
 
 export default function Register() {
   const dispatch = useDispatch();
+  const { user, loginStatus, error } = useSelector(selectUser);
   const [userState, setUserState] = useState("AC");
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const {
     control,
@@ -44,8 +48,14 @@ export default function Register() {
 
   const onSubmit = (data) => {
     // Dispatch as action to redux
-    //dispatch(registerUser(data));
+    dispatch(registerUser(data));
   };
+
+  useEffect(() => {
+    if (loginStatus === "failed") {
+      enqueueSnackbar("Erro de rede", { variant: "error" });
+    }
+  }, [enqueueSnackbar, loginStatus]);
 
   return (
     <Layout>

@@ -40,7 +40,6 @@ export default function CreatePost() {
       enqueueSnackbar("Insira uma imagem", { variant: "error" });
       return;
     }
-    console.log({ ...formData, species, files });
   };
 
   const {
