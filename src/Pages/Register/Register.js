@@ -6,6 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registrationSchema from "../../Validation/Schemas/registration-schema";
 import { useSnackbar } from "notistack";
+import styles from "./styles";
 
 import {
   Container,
@@ -20,10 +21,10 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import Loading from "../../Components/Loading";
 import Layout from "../../Components/Layout";
 import Svg from "../../Components/Svg/RegistroSvg";
 import boxDog from "../../Assets/Images/box-dog.png";
-import styles from "./styles";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -48,17 +49,32 @@ export default function Register() {
 
   const onSubmit = (data) => {
     // Dispatch as action to redux
-    dispatch(registerUser(data));
+    dispatch(
+      registerUser({
+        name: data.fullName,
+        email: data.email,
+        password: data.password,
+        city: data.city,
+        state: userState,
+      })
+    );
   };
 
   useEffect(() => {
     if (loginStatus === "failed") {
-      enqueueSnackbar("Erro de rede", { variant: "error" });
+      enqueueSnackbar(error ? error : "Erro de rede", { variant: "error" });
     }
-  }, [enqueueSnackbar, loginStatus]);
+
+    if (loginStatus === "success") {
+      enqueueSnackbar("Usuário registrado!", {
+        variant: "success",
+      });
+    }
+  }, [enqueueSnackbar, loginStatus, error]);
 
   return (
     <Layout>
+      {loginStatus === "loading" && <Loading />}
       <Container sx={styles.container}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
