@@ -25,12 +25,14 @@ import Loading from "../../Components/Loading";
 import Layout from "../../Components/Layout";
 import Svg from "../../Components/Svg/RegistroSvg";
 import boxDog from "../../Assets/Images/box-dog.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const dispatch = useDispatch();
   const { user, loginStatus, error } = useSelector(selectUser);
   const [userState, setUserState] = useState("AC");
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
 
   const {
     control,
@@ -69,8 +71,9 @@ export default function Register() {
       enqueueSnackbar("Usuário registrado!", {
         variant: "success",
       });
+      navigate("/");
     }
-  }, [enqueueSnackbar, loginStatus, error]);
+  }, [enqueueSnackbar, loginStatus, error, navigate]);
 
   return (
     <Layout>
