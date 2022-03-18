@@ -4,7 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../Validation/Schemas/login-schema";
 import { loginUser } from "../../Redux/Slices/User/requests";
-import { selectUser } from "../../Redux/Slices/User/userSlice";
+import { selectUser, resetRequest } from "../../Redux/Slices/User/userSlice";
 import { useSelector } from "react-redux";
 import { useSnackbar } from "notistack";
 import styles from "./styles";
@@ -53,15 +53,17 @@ export default function Login() {
   useEffect(() => {
     if (loginStatus === "failed") {
       enqueueSnackbar(error ? error : "Erro de rede", { variant: "error" });
+      dispatch(resetRequest());
     }
 
     if (loginStatus === "success") {
       enqueueSnackbar("Usuário registrado!", {
         variant: "success",
       });
+      dispatch(resetRequest());
       navigate("/");
     }
-  }, [enqueueSnackbar, loginStatus, error, navigate]);
+  }, [enqueueSnackbar, loginStatus, error, navigate, dispatch]);
 
   return (
     <Layout>
