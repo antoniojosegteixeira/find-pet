@@ -2,10 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { extraReducers } from "./requests";
 import reducers from "./reducers";
 
+const initialUser = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : {};
+
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    user: {},
+    user: initialUser,
     loginStatus: "",
     error: "",
   },

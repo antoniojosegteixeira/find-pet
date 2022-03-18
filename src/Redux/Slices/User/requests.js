@@ -38,6 +38,7 @@ const loginExtraReducer = {
     return { ...state, loginStatus: "loading" };
   },
   [loginUser.fulfilled]: (state, action) => {
+    localStorage.setItem("user", JSON.stringify(action.payload));
     return { ...state, loginStatus: "success", user: action.payload };
   },
   [loginUser.rejected]: (state, { payload }) => {
@@ -50,6 +51,7 @@ const registerExtraReducer = {
     return { ...state, loginStatus: "loading" };
   },
   [registerUser.fulfilled]: (state, action) => {
+    localStorage.setItem("user", JSON.stringify(action.payload));
     return { ...state, loginStatus: "success", user: action.payload };
   },
   [registerUser.rejected]: (state, { payload }) => {
