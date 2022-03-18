@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectUser, logout } from "../../Redux/Slices/User/userSlice";
+import { useDispatch } from "react-redux";
 import styles from "./styles";
 
 import { Link } from "react-router-dom";
@@ -14,6 +17,9 @@ import Logo from "../Svg/Logo";
 import HeaderMenu from "../HeaderMenu";
 
 export default function Layout({ children }) {
+  const { user } = useSelector(selectUser);
+  const dispatch = useDispatch();
+
   return (
     <Box sx={styles.screen}>
       <Box sx={{ flexGrow: 1 }}>
@@ -26,29 +32,76 @@ export default function Layout({ children }) {
             </Link>
 
             <Box sx={{ flexGrow: 1 }}></Box>
+
             <Box sx={styles.buttonWrapper}>
-              <Link to="/login">
-                <Button color="primary" variant="contained" sx={styles.button}>
-                  <Typography variant="p" sx={styles.buttonText} color="white">
-                    Entrar
-                  </Typography>
-                </Button>
-              </Link>
-              <Link to="/registrar">
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  sx={styles.button}
-                >
-                  <Typography
-                    variant="p"
-                    sx={styles.buttonText}
-                    color="primary"
-                  >
-                    Registrar
-                  </Typography>
-                </Button>
-              </Link>
+              {user.token ? (
+                <>
+                  <Link to="/perfil">
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      sx={styles.button}
+                    >
+                      <Typography
+                        variant="p"
+                        sx={styles.buttonText}
+                        color="white"
+                      >
+                        Meu Perfil
+                      </Typography>
+                    </Button>
+                  </Link>
+                  <Box>
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      sx={styles.button}
+                      onClick={() => dispatch(logout())}
+                    >
+                      <Typography
+                        variant="p"
+                        sx={styles.buttonText}
+                        color="primary"
+                      >
+                        Sair
+                      </Typography>
+                    </Button>
+                  </Box>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      sx={styles.button}
+                    >
+                      <Typography
+                        variant="p"
+                        sx={styles.buttonText}
+                        color="white"
+                      >
+                        Entrar
+                      </Typography>
+                    </Button>
+                  </Link>
+                  <Link to="/registrar">
+                    <Button
+                      color="secondary"
+                      variant="contained"
+                      sx={styles.button}
+                    >
+                      <Typography
+                        variant="p"
+                        sx={styles.buttonText}
+                        color="primary"
+                      >
+                        Registrar
+                      </Typography>
+                    </Button>
+                  </Link>
+                </>
+              )}
             </Box>
             <Box sx={styles.menuWrapper}>
               <HeaderMenu />

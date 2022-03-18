@@ -4,10 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../Validation/Schemas/login-schema";
 import { loginUser } from "../../Redux/Slices/User/requests";
-import userSlice, {
-  selectUser,
-  resetRequest,
-} from "../../Redux/Slices/User/userSlice";
+import { selectUser, resetRequest } from "../../Redux/Slices/User/userSlice";
 import { useSelector } from "react-redux";
 import { useSnackbar } from "notistack";
 import styles from "./styles";

@@ -23,7 +23,7 @@ const styles = {
   buttonText: {
     fontSize: ".8rem",
   },
-  buttonWrapper: { display: { xs: "none", md: "block" } },
+  buttonWrapper: { display: { xs: "none", md: "inline-flex" } },
   menuWrapper: {
     display: { xs: "block", md: "none" },
   },

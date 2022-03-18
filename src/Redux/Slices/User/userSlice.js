@@ -17,6 +17,6 @@ export const userSlice = createSlice({
   extraReducers: extraReducers,
 });
 
-export const { resetRequest } = userSlice.actions;
+export const { resetRequest, logout } = userSlice.actions;
 export const selectUser = (state) => state.user;
 export default userSlice.reducer;
