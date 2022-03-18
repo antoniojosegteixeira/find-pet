@@ -5,11 +5,15 @@ import axios from "axios";
 
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
-  async (formData) => {
-    const { data } = await axios.post("http://localhost:5000/login", {
-      data: formData,
-    });
-    return data;
+  async (formData, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post("http://localhost:5000/login", {
+        data: formData,
+      });
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 
@@ -36,8 +40,8 @@ const loginExtraReducer = {
   [loginUser.fulfilled]: (state, action) => {
     return { ...state, loginStatus: "success", user: action.payload };
   },
-  [loginUser.rejected]: (state, action) => {
-    return { ...state, loginStatus: "failed" };
+  [loginUser.rejected]: (state, { payload }) => {
+    return { ...state, loginStatus: "failed", error: payload };
   },
 };
 
