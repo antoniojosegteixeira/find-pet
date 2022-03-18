@@ -4,7 +4,10 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../Validation/Schemas/login-schema";
 import { loginUser } from "../../Redux/Slices/User/requests";
-import { selectUser, resetRequest } from "../../Redux/Slices/User/userSlice";
+import userSlice, {
+  selectUser,
+  resetRequest,
+} from "../../Redux/Slices/User/userSlice";
 import { useSelector } from "react-redux";
 import { useSnackbar } from "notistack";
 import styles from "./styles";
@@ -29,7 +32,7 @@ import loginCat from "../../Assets/Images/login-cat.png";
 
 export default function Login() {
   const dispatch = useDispatch();
-  const { loginStatus, error } = useSelector(selectUser);
+  const { user, loginStatus, error } = useSelector(selectUser);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -51,6 +54,10 @@ export default function Login() {
   };
 
   useEffect(() => {
+    if (user.token) {
+      navigate("/");
+    }
+
     if (loginStatus === "failed") {
       enqueueSnackbar(error ? error : "Erro de rede", { variant: "error" });
       dispatch(resetRequest());
