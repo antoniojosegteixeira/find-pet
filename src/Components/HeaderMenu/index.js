@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUser, logout } from "../../Redux/Slices/User/userSlice";
+import { useDispatch } from "react-redux";
 
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -6,13 +9,20 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 
 export default function HeaderMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const { user } = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    setAnchorEl(null);
+    dispatch(logout());
   };
 
   return (
@@ -27,22 +37,39 @@ export default function HeaderMenu() {
       >
         <i className="fas fa-bars"></i>
       </IconButton>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        <MenuItem onClick={handleClose} component={Link} to="/login">
-          Entrar
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/registrar">
-          Registrar
-        </MenuItem>
-      </Menu>
+      {user.token ? (
+        <Menu
+          id="logged-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem onClick={handleClose} component={Link} to="/perfil">
+            Perfil
+          </MenuItem>
+          <MenuItem onClick={handleLogout}>Sair</MenuItem>
+        </Menu>
+      ) : (
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem onClick={handleClose} component={Link} to="/login">
+            Entrar
+          </MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/registrar">
+            Registrar
+          </MenuItem>
+        </Menu>
+      )}
     </div>
   );
 }
