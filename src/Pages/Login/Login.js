@@ -57,14 +57,16 @@ export default function Login() {
     if (user.token) {
       navigate("/");
     }
+  }, [user.token, navigate]);
 
+  useEffect(() => {
     if (loginStatus === "failed") {
       enqueueSnackbar(error ? error : "Erro de rede", { variant: "error" });
       dispatch(resetRequest());
     }
 
     if (loginStatus === "success") {
-      enqueueSnackbar("Usuário registrado!", {
+      enqueueSnackbar("Usuário logado!", {
         variant: "success",
       });
       dispatch(resetRequest());
