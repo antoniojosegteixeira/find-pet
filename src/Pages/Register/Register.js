@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../Redux/Slices/User/requests.js";
-import { selectUser } from "../../Redux/Slices/User/userSlice";
+import { selectUser, resetRequest } from "../../Redux/Slices/User/userSlice";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registrationSchema from "../../Validation/Schemas/registration-schema";
@@ -63,17 +63,25 @@ export default function Register() {
   };
 
   useEffect(() => {
+    if (user.token) {
+      navigate("/");
+    }
+  }, [user.token, navigate]);
+
+  useEffect(() => {
     if (loginStatus === "failed") {
       enqueueSnackbar(error ? error : "Erro de rede", { variant: "error" });
+      dispatch(resetRequest());
     }
 
     if (loginStatus === "success") {
       enqueueSnackbar("Usuário registrado!", {
         variant: "success",
       });
+      dispatch(resetRequest());
       navigate("/");
     }
-  }, [enqueueSnackbar, loginStatus, error, navigate]);
+  }, [enqueueSnackbar, loginStatus, error, navigate, dispatch]);
 
   return (
     <Layout>
